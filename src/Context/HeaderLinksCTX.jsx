@@ -27,7 +27,7 @@ export const HeaderLinksCTXProvider = (props) => {
 
     // Change Value On Prev
     function prevChange(prev, current) {
-        if (prev === "None") { return current }
+        if (prev !== current) { return current }
         else { return "None" }
     }
 
