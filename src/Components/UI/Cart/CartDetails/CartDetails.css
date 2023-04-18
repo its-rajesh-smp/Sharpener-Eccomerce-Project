@@ -4,7 +4,6 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  border-top-left-radius: 30px;
   font-family: roboto;
   border-bottom: 15px solid rgba(128, 128, 128, 0.178);
 }

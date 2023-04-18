@@ -3,7 +3,7 @@
   justify-content: flex-end;
   gap: 20px;
   font-size: 25px;
-  color: rgb(91, 91, 91);
+  color: white;
 }
 .cart {
   display: flex;

@@ -2,19 +2,25 @@ import React, { useState } from 'react';
 
 const CartCTX = React.createContext({
     addToCartArray: () => { },
-    cartProductArray: []
+    setCartTotal: () => { },
+    cartProductArray: [],
+    cartTotal: {}
 })
 
 export const CartCTXProvider = ({ children }) => {
 
     const [cartProductArray, setCartProductArray] = useState([])
 
+    const [cartTotal, setCartTotal] = useState({ price: 0, quantity: 0 })
 
     /* -------------------------------------------------------------------------- */
     /*                               Add To CartList                              */
     /* -------------------------------------------------------------------------- */
     const addToCartArray = (productData) => {
-        // console.log(productData);
+        setCartTotal((prev) => {
+            return { price: prev.price + productData.price, quantity: prev.quantity + productData.quantity }
+        })
+
         setCartProductArray((prev) => {
             let isPresent = false
             const newArray = prev.map((val) => {
@@ -34,7 +40,7 @@ export const CartCTXProvider = ({ children }) => {
 
 
     return (
-        <CartCTX.Provider value={{ cartProductArray, addToCartArray }}>
+        <CartCTX.Provider value={{ cartProductArray, addToCartArray, setCartTotal, cartTotal }}>
             {children}
         </CartCTX.Provider>
     )

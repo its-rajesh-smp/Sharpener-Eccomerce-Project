@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./CartDetails.css"
+import CartCTX from '../../../../Context/CartCTX';
 
 function CartDetails(props) {
+
+    const cartTotal = useContext(CartCTX)
+
     return (
         <div className=' CartDetails-div '>
-            <p>Total: <span>10000</span> $</p>
+            <p>Total: <span>{cartTotal.cartTotal.price}</span> $</p>
             <i className='bx bx-cart' > <span style={{ fontFamily: "roboto" }}> Your Cart</span></i>
-            <p>Quantity: <span>10</span></p>
+            <p>Quantity: <span>{cartTotal.cartTotal.quantity}</span></p>
         </div>
     );
 }
