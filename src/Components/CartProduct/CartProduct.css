@@ -1,0 +1,12 @@
+.CartProduct-div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin-bottom: 5px;
+  background-color: #f5f5f5;
+  box-shadow: 2px 2px 5px black;
+}
+.CartProduct-div_img {
+  width: 100px;
+  border-radius: 5px;
+}

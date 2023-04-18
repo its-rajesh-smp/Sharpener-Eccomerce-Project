@@ -1,0 +1,13 @@
+.Cart-div {
+  height: 100%;
+  background-color: #ecf2ff;
+  width: 40%;
+  position: fixed;
+  z-index: 100;
+  border-top-left-radius: 30px;
+  border: 1px solid gray;
+  overflow-y: scroll;
+}
+.Cart-div::-webkit-scrollbar {
+  display: none;
+}

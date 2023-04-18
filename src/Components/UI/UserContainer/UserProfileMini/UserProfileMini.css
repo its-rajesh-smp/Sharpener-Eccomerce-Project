@@ -1,0 +1,10 @@
+.UserProfileMini-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 5px;
+  font-family: poppins;
+}
+.UserProfileMini-div_userImage {
+  width: 70px;
+}

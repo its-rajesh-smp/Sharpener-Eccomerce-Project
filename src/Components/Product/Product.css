@@ -1,0 +1,28 @@
+.Product-div {
+  padding: 5px;
+  background-color: #b9e9fc;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 200px;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.411);
+}
+
+.Product__image_container {
+  overflow: hidden;
+  border-radius: 10px;
+}
+.Product__image {
+  width: 200px;
+  scale: 1;
+  object-fit: fill;
+  border-radius: 10px;
+  transition-property: scale;
+  transition-duration: 500ms;
+  transition-delay: 200ms;
+}
+.Product__image:hover {
+  scale: 2;
+}

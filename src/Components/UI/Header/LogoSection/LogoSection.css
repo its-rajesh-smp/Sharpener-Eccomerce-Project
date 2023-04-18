@@ -1,0 +1,16 @@
+.LogoSection-div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.brandLogo {
+  width: 50px;
+}
+
+.brandName {
+  font-size: 40px;
+  margin-top: 10px;
+  font-family: "Sedgwick Ave Display", cursive;
+}

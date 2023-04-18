@@ -1,0 +1,13 @@
+.AddToCartProductBtn-div {
+  display: flex;
+  justify-content: center;
+}
+.AddToCartProductBtn-div button {
+  width: 150px;
+  background-color: #6d5d6e;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  color: white;
+  font-family: poppins;
+}

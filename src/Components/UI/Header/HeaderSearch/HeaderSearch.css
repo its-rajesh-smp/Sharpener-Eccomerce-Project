@@ -1,0 +1,27 @@
+.HeaderSearch-div {
+  display: flex;
+  margin: 0px 5px;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+}
+.Header__SearchBar {
+  height: 40px;
+  width: 100%;
+  border: none;
+  padding: 0px 5px;
+  outline: none;
+}
+.Header__SearchBar::placeholder {
+  font-family: poppins;
+}
+.Header__SearchButton {
+  width: 50px;
+  border: none;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background-color: #ffed00;
+}

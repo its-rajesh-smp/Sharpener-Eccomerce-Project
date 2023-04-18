@@ -1,0 +1,12 @@
+.ProductDetails-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ProductDetails-div_pricing {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+}

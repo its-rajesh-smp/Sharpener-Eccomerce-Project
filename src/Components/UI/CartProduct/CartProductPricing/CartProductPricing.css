@@ -1,0 +1,22 @@
+.CartProductPricing-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: roboto;
+  gap: 2px;
+  justify-content: center;
+}
+.CartProductPricing-div_quantityControll {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px;
+  width: 100px;
+  height: 30px;
+  background-color: #749f82;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+}

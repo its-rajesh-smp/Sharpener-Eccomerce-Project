@@ -1,0 +1,9 @@
+.Home-div_productSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.Home-div__productBlocksContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: min-content;
+}

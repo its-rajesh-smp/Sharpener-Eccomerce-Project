@@ -1,0 +1,28 @@
+.HeaderLinks-div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  font-size: 25px;
+  color: rgb(91, 91, 91);
+}
+.cart {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cartQuantity {
+  position: absolute;
+  background-color: rgb(255, 0, 0);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  font-size: 15px;
+  border-radius: 50%;
+  top: -10px;
+  left: 15px;
+  border: 1px solid black;
+}
