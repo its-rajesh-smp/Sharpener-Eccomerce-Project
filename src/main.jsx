@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom/client'
 import App from './App/App'
 import './index.css'
 import { HeaderLinksCTXProvider } from './Context/HeaderLinksCTX'
+import { CartCTXProvider } from './Context/CartCTX'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <HeaderLinksCTXProvider>
-      <App />
-    </HeaderLinksCTXProvider>
-  </React.StrictMode>,
+  <HeaderLinksCTXProvider>
+    <CartCTXProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </CartCTXProvider>
+  </HeaderLinksCTXProvider>
 )

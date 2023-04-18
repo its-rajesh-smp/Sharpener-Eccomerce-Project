@@ -6,9 +6,9 @@ import CartProductPricing from '../UI/CartProduct/CartProductPricing/CartProduct
 function CartProduct(props) {
     return (
         <div className=' CartProduct-div '>
-            <img className='CartProduct-div_img' src="https://cdn.josephturner.co.uk/Original/mens-navy-butcher-formal-striped-shirt-msbsnv_1.jpg" alt="shirt" />
-            <CartProductDetails />
-            <CartProductPricing />
+            <img className='CartProduct-div_img' src={props.details.imageUrl} alt={props.details.name} />
+            <CartProductDetails details={props.details} />
+            <CartProductPricing details={props.details} />
         </div>
     );
 }

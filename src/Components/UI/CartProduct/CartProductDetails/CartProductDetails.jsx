@@ -4,7 +4,7 @@ import "./CartProductDetails.css"
 function CartProductDetails(props) {
     return (
         <div className=' CartProductDetails-div '>
-            <p>BlackWhite Strip Collar</p>
+            <p>{props.details.name}</p>
             <p>Shirt</p>
 
             <div className='CartProductDetails-div_options'>

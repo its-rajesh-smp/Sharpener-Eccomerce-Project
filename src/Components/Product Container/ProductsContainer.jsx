@@ -17,7 +17,7 @@ function ProductContainer(props) {
                             name: val.name,
                             id: val.id,
                             price: val.price,
-                            img: val.imageUrl
+                            imageUrl: val.imageUrl
                         }} />
                     })
                 }

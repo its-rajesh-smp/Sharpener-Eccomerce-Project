@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./CartProductContainer.css"
 import CartProduct from '../CartProduct/CartProduct';
+import CartCTX from '../../Context/CartCTX';
 
 function CartProductContainer(props) {
+
+    const cartProductArray = useContext(CartCTX)
+
+
     return (
         <div className=' CartProductContainer-div '>
-            <CartProduct />
-            <CartProduct />
-            <CartProduct />
-            <CartProduct />
-            <CartProduct />
+            {
+                cartProductArray.cartProductArray.map((val) => {
+                    return <CartProduct details={val} key={Math.random()} />
+                })
+            }
         </div>
     );
 }

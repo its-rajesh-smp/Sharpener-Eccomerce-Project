@@ -7,13 +7,11 @@ import AddToCartProductBtn from '../UI/Product/AddToCartProductBtn/AddToCartProd
 function Product(props) {
 
 
-
-
     return (
         <div className=' Product-div '>
 
             <div className='Product__image_container'>
-                <img className='Product__image' src={props.details.img} alt={props.details.name} />
+                <img className='Product__image' src={props.details.imageUrl} alt={props.details.name} />
             </div>
             <ProductDetails details={props.details} />
             <AddToCartProductBtn details={props.details} />

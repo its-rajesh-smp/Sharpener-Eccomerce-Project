@@ -11,10 +11,10 @@ function CartProductPricing(props) {
                 <p>+</p>
             </button>
 
-            <p style={{ fontSize: "14px", textDecoration: "line-through" }} ><span>1000</span> $</p>
+            <p style={{ fontSize: "14px", textDecoration: "line-through" }} ><span>{props.details.price}</span> $</p>
             <p style={{ fontSize: "16px", color: "red" }} ><span>1000</span> $</p>
             <p>1</p>
-            <p><span>1000</span> x <span>1</span> = <span>1000</span> $</p>
+            <p><span>1000</span> x <span>{props.details.quantity}</span> = <span>1000</span> $</p>
 
 
         </div>
