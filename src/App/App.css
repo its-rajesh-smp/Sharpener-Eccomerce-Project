@@ -1,3 +1,12 @@
 .container {
   margin: 0px 20px;
 }
+
+.active {
+  color: rgb(142, 212, 11);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}

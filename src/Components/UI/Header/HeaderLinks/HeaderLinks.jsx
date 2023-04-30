@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import "./HeaderLinks.css"
 import HeaderLinksCTX from '../../../../Context/HeaderLinksCTX';
 import CartCTX from '../../../../Context/CartCTX';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function HeaderLinks(props) {
 
@@ -27,8 +27,8 @@ function HeaderLinks(props) {
     return (
         <div className=' HeaderLinks-div '>
 
-            <Link to="/contactus"><i className='bx bx-support'></i></Link>
-            <Link to="/notification"><i className='bx bx-bell'></i></Link>
+            <NavLink to="/contactus"><i className='bx bx-support'></i></NavLink>
+            <NavLink to="/notification"><i className='bx bx-bell'></i></NavLink>
 
 
             <div onClick={onCartBtnClick} className='cart'>
