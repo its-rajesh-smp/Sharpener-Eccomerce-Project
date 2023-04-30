@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import "./HeaderLinks.css"
 import HeaderLinksCTX from '../../../../Context/HeaderLinksCTX';
 import CartCTX from '../../../../Context/CartCTX';
+import { Link } from 'react-router-dom';
 
 function HeaderLinks(props) {
 
@@ -25,8 +26,10 @@ function HeaderLinks(props) {
 
     return (
         <div className=' HeaderLinks-div '>
-            <i className='bx bx-support'></i>
-            <i className='bx bx-bell'></i>
+
+            <Link to="/contactus"><i className='bx bx-support'></i></Link>
+            <Link to="/notification"><i className='bx bx-bell'></i></Link>
+
 
             <div onClick={onCartBtnClick} className='cart'>
                 <i className='bx bx-cart-alt'></i>
