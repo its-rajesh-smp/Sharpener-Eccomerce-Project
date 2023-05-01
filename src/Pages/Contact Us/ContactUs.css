@@ -1,0 +1,6 @@
+.ContactUs-div_container {
+  padding: 0px 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 500px;
+}

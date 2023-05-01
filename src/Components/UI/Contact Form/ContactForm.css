@@ -1,0 +1,39 @@
+.ContactForm-div {
+  padding: 10px 50px;
+  font-family: roboto;
+  background-color: aliceblue;
+}
+.ContactForm-div h3 {
+  padding-bottom: 40px;
+}
+.ContactForm-div form div {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+.ContactForm-div form div input {
+  height: 40px;
+  width: 20vw;
+  margin-bottom: 40px;
+  padding: 5px;
+  outline-color: blue;
+  font-family: poppins;
+}
+.ContactForm-div form div input::placeholder {
+  font-family: poppins;
+  color: blue;
+}
+
+.ContactForm-div form button {
+  padding: 10px 20px;
+  background-color: blue;
+  border: none;
+  color: white;
+  font-family: roboto;
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px black;
+}
+.ContactForm-div form button:hover {
+  cursor: pointer;
+  background-color: rgb(14, 14, 187);
+}

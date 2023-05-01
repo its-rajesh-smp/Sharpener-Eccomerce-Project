@@ -6,7 +6,7 @@ import ProductContainer from '../../Components/Product Container/ProductsContain
 function Home(props) {
     return (
         <div className=' Home-div '>
-            <PrimaryHeader />
+
 
             <ProductContainer />
 
