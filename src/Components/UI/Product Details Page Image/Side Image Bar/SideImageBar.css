@@ -1,0 +1,8 @@
+.SideImageBar-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.SideImageBar-div img {
+  width: 70px;
+}

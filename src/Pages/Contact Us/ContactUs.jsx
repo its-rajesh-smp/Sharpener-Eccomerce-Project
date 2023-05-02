@@ -6,7 +6,7 @@ import ContactForm from "../../Components/UI/Contact Form/ContactForm"
 
 function ContactUs(props) {
     return (
-        <div className=' ContactUs-div '>
+        <div className=' ContactUs-div container '>
             <Helpcatagorie />
 
             <div className='ContactUs-div_container'>

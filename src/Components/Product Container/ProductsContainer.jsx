@@ -6,11 +6,9 @@ import Product from '../Product/Product';
 
 function ProductContainer(props) {
     return (
-        <div className='container'>
+        <div className='ProductContainer_container'>
             <h3 className='ProductContainer-chatagorie'>Cloathings</h3>
             <div className=' ProductContainer-div '>
-
-
                 {
                     productsArr.map((val) => {
                         return <Product key={val.id} details={{
@@ -21,10 +19,9 @@ function ProductContainer(props) {
                         }} />
                     })
                 }
-
-
             </div>
         </div>
+
     );
 }
 

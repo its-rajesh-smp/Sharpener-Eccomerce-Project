@@ -1,8 +1,12 @@
+.ProductContainer_container {
+  margin-left: 20px;
+}
 .ProductContainer-chatagorie {
+  padding: 20px 10px;
   font-family: roboto;
-  margin: 20px 5px;
 }
 .ProductContainer-div {
   display: flex;
   font-family: poppins;
+  gap: 10px;
 }

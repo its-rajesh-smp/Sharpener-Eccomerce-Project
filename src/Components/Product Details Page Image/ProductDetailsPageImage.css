@@ -1,0 +1,7 @@
+.ProductDetailsPageImage-div {
+}
+.ProductDetailsPageImage-div_container {
+  position: fixed;
+  display: flex;
+  gap: 50px;
+}

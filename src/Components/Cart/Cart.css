@@ -6,6 +6,7 @@
   z-index: 100;
   border: 1px solid gray;
   overflow-y: scroll;
+  top: 60px;
 }
 .Cart-div::-webkit-scrollbar {
   display: none;

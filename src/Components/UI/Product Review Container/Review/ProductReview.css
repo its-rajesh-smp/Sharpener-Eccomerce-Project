@@ -1,0 +1,31 @@
+.ProductReview-div {
+  background-color: aliceblue;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.ProductReview-div_name {
+  font-size: larger;
+  font-family: poppins;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.ProductReview-div_rating {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-family: roboto;
+  font-size: 12px;
+}
+.ProductReview-div_comment {
+  font-family: roboto;
+  font-size: 15px;
+}
+.ProductReview-div_btnHelpfull {
+  background-color: antiquewhite;
+  font-family: poppins;
+  padding: 3px;
+  margin-top: 5px;
+  border: none;
+  font-size: 12px;
+  border-radius: 5px;
+}

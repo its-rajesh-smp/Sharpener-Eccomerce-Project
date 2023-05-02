@@ -18,7 +18,7 @@ function PrimaryHeader(props) {
     return (
         <>
             <div className=' PrimaryHeader-div  '>
-                <div className='PrimaryHeaderItemContainer container' >
+                <div className='PrimaryHeaderItemContainer' >
                     <Hamburger />
                     <LogoSection />
                     <HeaderSearch />

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import "./Cart.css"
 // Components
 import CartDetails from '../UI/Cart/CartDetails/CartDetails';

@@ -1,0 +1,19 @@
+.ProductDetailsPageData-div {
+}
+.ProductDetailsPageData_productName {
+  font-family: poppins;
+}
+.ProductDetailsPageData_productRating {
+  font-size: 12px;
+  font-family: poppins;
+}
+.ProductDetailsPageData_productPrice {
+  font-family: poppins;
+}
+.ProductDetailsPageData_productDescription,
+.ProductDetailsPageData_productSpecification {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding: 15px 0px;
+  font-family: poppins;
+}

@@ -1,0 +1,31 @@
+.MainProductImage-div {
+}
+.MainProductImage-div img {
+  width: 29vw;
+  transition-property: scale;
+  transition-duration: 100ms;
+}
+.MainProductImage-div img:hover {
+  scale: 2;
+}
+
+.MainProductImage-div_btnContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.MainProductImage-div_btnContainer button {
+  padding: 20px;
+  cursor: pointer;
+  border: none;
+  font-family: poppins;
+  color: aliceblue;
+  font-weight: 600;
+}
+
+.MainProductImage-div_btnContainer button:first-child {
+  background-color: #ff9f00;
+}
+.MainProductImage-div_btnContainer button:last-child {
+  background-color: #fb641b;
+}
