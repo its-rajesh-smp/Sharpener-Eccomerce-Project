@@ -8,7 +8,7 @@ function NewRegistration(props) {
     return (
         <div className='container Login-div '>
 
-            <LoginPageRight icon="" for="newAccount" />
+            <LoginPageRight icon="" for="CREATE_NEW_USER" />
             <LoginPageleft backImage={createNewAccountRightBackground} text1="New Account" text2="Create new account with your email & password" />
 
         </div>

@@ -11,9 +11,7 @@ function OverallRatingBar(props) {
         <div className=' OverallRatingBar-div '>
             <p><span>{props.number}</span>⭐</p>
             <div className='OverallRatingBar-div_bar'>
-                <div style={{ backgroundColor: props.color, width: `${barWidth}%` }} className='OverallRatingBar-div_bar_inner'>
-
-                </div>
+                <div style={{ backgroundColor: props.color, width: `${barWidth}%` }} className='OverallRatingBar-div_bar_inner'></div>
             </div>
             <p>{props.value}</p>
         </div>
