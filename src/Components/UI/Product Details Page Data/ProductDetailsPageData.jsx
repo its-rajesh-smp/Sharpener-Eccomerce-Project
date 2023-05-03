@@ -1,13 +1,18 @@
 import React from "react";
 import "./ProductDetailsPageData.css";
 import ProductReviewContainer from "../../Product Review Container/ProductReviewContainer";
+import ReviewStars from "../Product Review Container/Review Stars/ReviewStars";
+
+
 function ProductDetailsPageData(props) {
     return (
         <div className=" ProductDetailsPageData-div ">
             <h1 className="ProductDetailsPageData_productName">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, facere.
             </h1>
-            <p>⭐⭐⭐⭐</p>
+
+            <ReviewStars />
+
             <p className="ProductDetailsPageData_productRating">
                 <span style={{ fontWeight: 700 }}>1,479</span> Ratings & <span style={{ fontWeight: 700 }}>208</span> Reviews
             </p>

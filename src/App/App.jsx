@@ -12,6 +12,8 @@ import PrimaryHeader from '../Components/Header/PrimaryHeader';
 import ProductDetailsPage from '../Pages/Product Details/ProductDetailsPage';
 
 
+import Login from '../Pages/Login/Login';
+
 
 
 function App(props) {
@@ -22,7 +24,8 @@ function App(props) {
 
       <Switch>
         <Route exact path="/"><Redirect to="/home"><Home /></Redirect></Route>
-        <Route exact path="/home"><Home /></Route>
+        {/* <Route exact path="/home"><Home /></Route> */}
+        <Route exact path="/home"><Login /></Route>
         <Route path="/contactus"><ContactUs /></Route>
         <Route path="/notification"><Notification /></Route>
         <Route path="/home/product"><ProductDetailsPage /></Route>

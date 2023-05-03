@@ -1,0 +1,90 @@
+.Login-div {
+  height: calc(100vh - 60px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.Login-div_leftSide {
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background: repeating-linear-gradient(
+    45deg,
+    #b5b6cd,
+    #b3b6de 5px,
+    #e5e5f7 5px,
+    #e5e5f7 25px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Login-div_leftSide div {
+  background-image: url("https://img.freepik.com/free-photo/handbag-near-sunglasses-with-wear-plant-twigs_23-2148107978.jpg?w=1380&t=st=1683093551~exp=1683094151~hmac=5b161270d137dbd9acecd8d75e4bb5ee442145129aed63c06f49f39f58b66de3");
+  width: fit-content;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.Login-div_leftSide div h1 {
+  font-size: 60px;
+  font-family: poppins;
+  text-shadow: 2px 2px 5px wheat;
+}
+.Login-div_leftSide div p {
+  font-family: poppins;
+  font-weight: 700;
+  text-shadow: 2px 2px 5px wheat;
+}
+
+.Login-div_rightSide {
+  background: rgb(135, 200, 230);
+  background: linear-gradient(
+    90deg,
+    rgba(135, 200, 230, 1) 38%,
+    rgba(124, 135, 231, 1) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Login-div_rightSide_form {
+  width: 90%;
+  height: 90%;
+  background-color: #daf5ff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.Login-div_rightSide_form img {
+  width: 100px;
+}
+.Login-div_rightSide_form_div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.Login-div div form button {
+  padding: 10px 30px;
+  width: 100px;
+  margin: 20px 0px;
+  border: none;
+  background-color: #b3b6de;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px blue;
+}
+.Login-div form div p {
+  font-family: roboto;
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: blue;
+}

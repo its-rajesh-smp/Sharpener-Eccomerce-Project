@@ -16,7 +16,10 @@ function ProductReview(props) {
             </div>
 
 
-            <button className='ProductReview-div_btnHelpfull'>Helpful (<span style={{ fontWeight: 600 }}>13</span>)</button>
+            <div className='ProductReview-div_btnGroup'>
+                <button className='ProductReview-div_btnHelpfull'><i className='bx bxs-hand-up'></i> (<span style={{ fontWeight: 600 }}>13</span>)</button>
+                <button className='ProductReview-div_btnHelpfull'><i className='bx bxs-hand-down'></i> (<span style={{ fontWeight: 600 }}>13</span>)</button>
+            </div>
 
         </div>
     );
