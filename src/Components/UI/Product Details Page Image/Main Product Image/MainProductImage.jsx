@@ -6,7 +6,7 @@ function MainProductImage(props) {
         <div className=' MainProductImage-div '>
 
             <div style={{ overflow: "hidden" }}>
-                <img src='https://cdn.josephturner.co.uk/Original/mens-navy-butcher-formal-striped-shirt-msbsnv_1.jpg' alt='Product' />
+                <img src={props.details.imageUrl} alt={props.details.name} />
             </div>
 
             <div className='MainProductImage-div_btnContainer'>

@@ -6,8 +6,8 @@ function UserProfileMini(props) {
     return (
         <div className=' UserProfileMini-div '>
             <img className='UserProfileMini-div_userImage' src={userProfileImage} alt='userImage' />
-            <p>Rajesh Singha Mahapatra</p>
-            <p style={{ fontSize: "12px" }} >+91 8942908195</p>
+            <p>{props.userDetails.userName !== undefined ? props.userDetails.userName : "Login First"}</p>
+            <p style={{ fontSize: "12px" }} ><span>{props.userDetails.userPhone}</span></p>
         </div>
     );
 }

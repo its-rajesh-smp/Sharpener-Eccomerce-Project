@@ -4,11 +4,12 @@ import SideImageBar from '../UI/Product Details Page Image/Side Image Bar/SideIm
 import MainProductImage from '../UI/Product Details Page Image/Main Product Image/MainProductImage';
 
 function ProductDetailsPageImage(props) {
+
     return (
         <div className=' ProductDetailsPageImage-div '>
             <div className='ProductDetailsPageImage-div_container'>
-                <SideImageBar />
-                <MainProductImage />
+                <SideImageBar details={props.details} />
+                <MainProductImage details={props.details} />
             </div>
         </div>
     );

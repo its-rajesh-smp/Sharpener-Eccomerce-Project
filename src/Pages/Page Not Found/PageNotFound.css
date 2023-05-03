@@ -1,0 +1,9 @@
+.PageNotFound-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: poppins;
+  height: calc(100vh - 60px);
+  background-image: url("https://img.freepik.com/free-vector/construction-template-flat-style_23-2147756740.jpg?w=740&t=st=1683114653~exp=1683115253~hmac=82941c73818f7158e9d080d1215f943b82b4c3b8a4e5d2216aa2de6a76953b08");
+}

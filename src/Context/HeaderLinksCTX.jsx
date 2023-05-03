@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
 const HeaderLinksCTX = React.createContext({
+
     toggleCart: () => { },
+    setOpenLinks: () => { },
     toggleUser: () => { },
     openLinks: false
 })

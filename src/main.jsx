@@ -6,16 +6,22 @@ import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min'
 
 import { HeaderLinksCTXProvider } from './Context/HeaderLinksCTX'
 import { CartCTXProvider } from './Context/CartCTX'
-
+import { LoginContextProvider } from './Context/LoginContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <HeaderLinksCTXProvider>
-    <CartCTXProvider>
-      <React.StrictMode>
+
+  <LoginContextProvider>
+    <HeaderLinksCTXProvider>
+      <CartCTXProvider>
+
         <BrowserRouter>
+
           <App />
+
+
         </BrowserRouter>
-      </React.StrictMode>
-    </CartCTXProvider>
-  </HeaderLinksCTXProvider>
+
+      </CartCTXProvider>
+    </HeaderLinksCTXProvider>
+  </LoginContextProvider>
 )

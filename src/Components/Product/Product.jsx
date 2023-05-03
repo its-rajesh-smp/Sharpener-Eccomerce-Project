@@ -8,11 +8,12 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 function Product(props) {
 
 
+
     return (
         <div className=' Product-div '>
 
             <div className='Product__image_container'>
-                <Link to="/home/product">
+                <Link to={`/home/product/${props.details.id}`}>
                     <img className='Product__image' src={props.details.imageUrl} alt={props.details.name} />
                 </Link>
             </div>
