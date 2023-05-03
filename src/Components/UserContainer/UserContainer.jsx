@@ -10,6 +10,7 @@ function UserContainer(props) {
     const loginCTX = useContext(LoginContext)
 
 
+
     return (
         <div className=' UserContainer-div slide '>
             <UserProfileMini userDetails={loginCTX.loginState} />

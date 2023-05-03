@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./UserLinksContainer.css"
 import UserLinks from '../UserLinks/UserLinks';
+import LoginContext from '../../../../Context/LoginContext';
 
 function UserLinksContainer(props) {
+
+    const loginCTX = useContext(LoginContext)
+
+
     return (
         <div className=' UserLinksContainer-div '>
             <UserLinks icon={<i className='bx bx-receipt'></i>} name="My Order" link="#" />
@@ -11,7 +16,8 @@ function UserLinksContainer(props) {
             <UserLinks icon={<i className='bx bxs-heart' ></i>} name="My Wishlist" link="#" />
             <UserLinks icon={<i className='bx bxs-offer' ></i>} name="My Offers" link="#" />
 
-            <UserLinks icon={<i className='bx bxs-log-out'></i>} name="Logout" link="#" />
+            {loginCTX.isLogin && <UserLinks onClick={loginCTX.logoutUser} icon={<i className='bx bxs-log-out'></i>} name="Logout" link="#" />}
+
         </div>
     );
 }
