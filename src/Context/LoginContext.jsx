@@ -4,6 +4,7 @@ import { CREATE_NEW_USER_APIKEY, LOGIN_USER_APIKEY } from '../Assets/Assets';
 
 const LoginContext = React.createContext({
     isLogin: "",
+    loader: "",
     setIslogin: () => { },
     createAndLoginUser: () => { },
     logoutUser: () => { },
@@ -17,6 +18,7 @@ export const LoginContextProvider = ({ children }) => {
 
     const [isLogin, setIslogin] = useState(false)
     const [loadingScreen, setLoadingScreen] = useState(true)
+    const [loader, setLoader] = useState(false)
 
 
     /* -------------------------------------------------------------------------- */
@@ -44,6 +46,7 @@ export const LoginContextProvider = ({ children }) => {
     /* -------------------------------------------------------------------------- */
 
     const createAndLoginUser = async (email, password, action) => {
+        setLoader(true)
         try {
             const response = await fetch(action === "CREATE_NEW_USER" ? CREATE_NEW_USER_APIKEY : LOGIN_USER_APIKEY, {
                 method: "POST",
@@ -58,14 +61,13 @@ export const LoginContextProvider = ({ children }) => {
             if (!response.ok) {
                 throw new Error(data.error.message)
             }
-
             controlUserAccess(data, "ALLOW")
 
-
         } catch (error) {
-            console.log(error);
             alert(error)
         }
+
+        setLoader(false)
     }
 
     /* -------------------------------------------------------------------------- */
@@ -84,6 +86,7 @@ export const LoginContextProvider = ({ children }) => {
             localStorage.removeItem("data")
             setIslogin(false)
         }
+
     }
 
     /* -------------------------------------------------------------------------- */
@@ -98,7 +101,7 @@ export const LoginContextProvider = ({ children }) => {
 
 
     return (
-        <LoginContext.Provider value={{ isLogin, loginState, createAndLoginUser, logoutUser, loadingScreen }}>
+        <LoginContext.Provider value={{ isLogin, loginState, createAndLoginUser, logoutUser, loadingScreen, loader }}>
             {children}
         </LoginContext.Provider>
     )

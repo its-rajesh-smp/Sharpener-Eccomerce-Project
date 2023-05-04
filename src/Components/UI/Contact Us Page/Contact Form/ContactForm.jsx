@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./ContactForm.css";
-import { CONTACT_US_FIREBASE_API } from "../../../Assets/Assets";
+import { CONTACT_US_FIREBASE_API } from "../../../../Assets/Assets";
 
 function ContactForm(props) {
 

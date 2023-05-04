@@ -38,6 +38,9 @@
   color: white;
   border-radius: 10px;
   box-shadow: 2px 2px 5px blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .Login-div form div p {
   font-family: roboto;

@@ -19,6 +19,8 @@ import PageNotFound from '../Pages/Page Not Found/PageNotFound';
 import LoadingPage from '../Pages/Loading Page/LoadingPage';
 
 
+
+
 function App(props) {
 
   const loginCTX = useContext(LoginContext)
@@ -32,6 +34,7 @@ function App(props) {
 
   return (
     <>
+
       <PrimaryHeader />
 
       <Switch>
@@ -50,7 +53,7 @@ function App(props) {
         <PrivateRoute auth={false} exact={true} component={Login} path="/login" />
         <PrivateRoute auth={false} exact={false} component={NewRegistration} path="/newregistration" />
 
-        <Route path="*">{loginCTX.isLogin ? <Redirect to="/home" /> : <Redirect to="/login" />}</Route>
+        <Route path="*"><Redirect to="/" /></Route>
 
       </Switch>
 

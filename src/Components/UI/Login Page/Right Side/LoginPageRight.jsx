@@ -16,12 +16,13 @@ function LoginPageRight(props) {
     /* -------------------------------------------------------------------------- */
     const createAndLoginBtnHandeler = (e) => {
         e.preventDefault()
-        const enteredEmail = emailRef.current.children[1].children[0].value
-        const enteredPassword = passwordRef.current.children[1].children[0].value
-        const action = props.for
-        loginCTX.createAndLoginUser(enteredEmail, enteredPassword, action)
+        if (!loginCTX.loader) {
+            const enteredEmail = emailRef.current.children[1].children[0].value
+            const enteredPassword = passwordRef.current.children[1].children[0].value
+            const action = props.for
+            loginCTX.createAndLoginUser(enteredEmail, enteredPassword, action)
+        }
     }
-
 
 
     return (
@@ -34,7 +35,8 @@ function LoginPageRight(props) {
                     <TextField ref={passwordRef} id="standard-basic" label="Your Password" variant="standard" />
 
 
-                    <button onClick={createAndLoginBtnHandeler}>{props.for !== "newAccount" ? "LOGIN" : "CREATE ACCOUNT"}</button>
+                    <button onClick={createAndLoginBtnHandeler}>{loginCTX.loader ? <i className='bx bx-loader-circle bx-spin' ></i> : props.for !== "newAccount" ? "LOGIN" : "CREATE ACCOUNT"}</button>
+
 
                     {
                         props.for !== "CREATE_NEW_USER" ?

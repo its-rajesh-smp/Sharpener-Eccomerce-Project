@@ -8,8 +8,9 @@
   padding-bottom: 40px;
 }
 .ContactDetails-div_div {
-  display: flex;
-  gap: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px;
 }
 
 .ContactDetails-div p {
