@@ -10,4 +10,7 @@
   height: 30px;
   color: white;
   font-family: poppins;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

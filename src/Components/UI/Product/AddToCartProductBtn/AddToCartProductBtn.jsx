@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import "./AddToCartProductBtn.css"
 import CartCTX from '../../../../Context/CartCTX';
 import { useState } from 'react';
@@ -6,11 +6,13 @@ import { useState } from 'react';
 function AddToCartProductBtn(props) {
     const cartContext = useContext(CartCTX)
 
-    const [isAdded, setIsAdded] = useState(false)
 
+    const [isAdded, setIsAdded] = useState(false)
+    const [loader, setLoader] = useState(false)
 
     // Add To Cart On Button Click
     const addToCartOnBtnClick = () => {
+        setLoader(true)
         const productData = {
             name: props.details.name,
             price: props.details.price,
@@ -18,7 +20,8 @@ function AddToCartProductBtn(props) {
             quantity: 1,
             id: props.details.id
         }
-        cartContext.addToCartArray(productData, setIsAdded)
+
+        cartContext.addToCartArray(productData, setIsAdded, setLoader)
     }
 
 
@@ -26,9 +29,10 @@ function AddToCartProductBtn(props) {
 
     return (
         <div className=' AddToCartProductBtn-div '>
-            {!isAdded && <button onClick={addToCartOnBtnClick} >Add</button>}
+            {(!isAdded && !loader) && < button onClick={addToCartOnBtnClick}>Add</button>}
+            {loader && <button ><i className='bx bx-loader-circle bx-spin' ></i></button>}
             {isAdded && <button >ADDED TO CART</button>}
-        </div>
+        </div >
     );
 }
 

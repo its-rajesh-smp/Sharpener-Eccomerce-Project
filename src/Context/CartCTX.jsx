@@ -36,21 +36,49 @@ export const CartCTXProvider = ({ children }) => {
     /* -------------------------------------------------------------------------- */
     /*                               Add To CartList                              */
     /* -------------------------------------------------------------------------- */
-    const addToCartArray = async (productData, setIsAdded) => {
-        try {
-            const response = await fetch(`${CART_FIREBASE_APIKEY}/${productData.id}.json`, {
-                method: "PUT",
-                body: JSON.stringify(productData)
-            })
-            const data = await response.json()
+    const addToCartArray = async (productData, setIsAdded, setLoader) => {
 
-            if (!response.ok) {
-                throw new Error(data.error.message)
+        let isAdded = false
+        cartProductArray.forEach((product) => {
+            if (product.id === productData.id) {
+                isAdded = true
+                setLoader(false)
+                setIsAdded(true)
+                setTimeout(function () {
+                    setIsAdded(false)
+                }, 3000);
+                return
             }
-            setIsAdded(true)
-        } catch (error) {
-            alert(error)
-            console.log(error);
+        })
+
+        if (!isAdded) {
+            try {
+                const response = await fetch(`${CART_FIREBASE_APIKEY}/${productData.id}.json`, {
+                    method: "PUT",
+                    body: JSON.stringify(productData)
+                })
+                const data = await response.json()
+
+                if (!response.ok) {
+                    throw new Error(data.error.message)
+                }
+
+                setCartProductArray((prev) => {
+                    return [productData, ...prev]
+                })
+
+                setLoader(false)
+                setIsAdded(true)
+                setTimeout(function () {
+                    setIsAdded(false)
+                }, 3000);
+
+
+            } catch (error) {
+                alert(error)
+                console.log(error);
+                setLoader(false)
+            }
         }
 
     }
@@ -73,6 +101,8 @@ export const CartCTXProvider = ({ children }) => {
                     return cartProduct.id !== productData.id
                 })
             })
+
+
 
         } catch (error) {
             alert(error)

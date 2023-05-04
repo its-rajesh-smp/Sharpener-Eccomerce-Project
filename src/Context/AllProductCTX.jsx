@@ -50,7 +50,7 @@ export const AllProductContextProvider = ({ children }) => {
                 for (const key in allProductList) {
                     allProductList[key].id = key
 
-                    if (cartProductList[key]) {
+                    if (cartProductList !== null && cartProductList[key]) {
                         allProductList[key].quantity = cartProductList[key].quantity
                     }
                     else {
@@ -59,16 +59,17 @@ export const AllProductContextProvider = ({ children }) => {
                     newProductList.push(allProductList[key])
                 }
 
-                for (const key in cartProductList) {
-                    newCartList.push(cartProductList[key])
-                    newCartTotal.price += cartProductList[key].price
-                    newCartTotal.quantity += cartProductList[key].quantity
+                if (cartProductList !== null) {
+                    for (const key in cartProductList) {
+                        newCartList.push(cartProductList[key])
+                        newCartTotal.price += cartProductList[key].price
+                        newCartTotal.quantity += cartProductList[key].quantity
+                    }
                 }
 
                 setAllProductArray(newProductList)
                 setCartProducts(newCartList)
                 setCartTotal(newCartTotal)
-
 
             } catch (error) {
                 console.log(error);
