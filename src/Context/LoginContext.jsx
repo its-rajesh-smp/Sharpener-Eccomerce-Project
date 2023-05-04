@@ -85,7 +85,6 @@ export const LoginContextProvider = ({ children }) => {
                 idToken: data.idToken,
                 userName: undefined,
                 userPhone: undefined,
-                cartData: []
             })
         }
         else {
@@ -96,7 +95,6 @@ export const LoginContextProvider = ({ children }) => {
                 idToken: undefined,
                 userName: undefined,
                 userPhone: undefined,
-                cartData: []
             })
         }
 

@@ -8,6 +8,7 @@ function AddToCartProductBtn(props) {
 
     const [isAdded, setIsAdded] = useState(false)
 
+
     // Add To Cart On Button Click
     const addToCartOnBtnClick = () => {
         const productData = {
@@ -17,8 +18,7 @@ function AddToCartProductBtn(props) {
             quantity: 1,
             id: props.details.id
         }
-        cartContext.addToCartArray(productData)
-        setIsAdded(true)
+        cartContext.addToCartArray(productData, setIsAdded)
     }
 
 
@@ -27,7 +27,7 @@ function AddToCartProductBtn(props) {
     return (
         <div className=' AddToCartProductBtn-div '>
             {!isAdded && <button onClick={addToCartOnBtnClick} >Add</button>}
-            {isAdded && <button >GO TO CART</button>}
+            {isAdded && <button >ADDED TO CART</button>}
         </div>
     );
 }

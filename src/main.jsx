@@ -7,23 +7,27 @@ import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min'
 import { HeaderLinksCTXProvider } from './Context/HeaderLinksCTX'
 import { CartCTXProvider } from './Context/CartCTX'
 import { LoginContextProvider } from './Context/LoginContext'
-
+import { AllProductContextProvider } from './Context/AllProductCTX'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
   <LoginContextProvider>
-    <HeaderLinksCTXProvider>
-      <CartCTXProvider>
+    <AllProductContextProvider>
 
-        <BrowserRouter>
+      <HeaderLinksCTXProvider>
+        <CartCTXProvider>
 
-          <App />
+          <BrowserRouter>
+
+            <App />
 
 
-        </BrowserRouter>
+          </BrowserRouter>
 
-      </CartCTXProvider>
-    </HeaderLinksCTXProvider>
+        </CartCTXProvider>
+      </HeaderLinksCTXProvider>
+
+    </AllProductContextProvider>
   </LoginContextProvider>
 
 )

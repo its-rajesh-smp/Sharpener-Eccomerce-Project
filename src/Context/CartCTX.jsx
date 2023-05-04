@@ -1,32 +1,83 @@
 import React, { useState } from 'react';
+import { CART_FIREBASE_APIKEY } from '../Assets/Assets';
+import { useContext } from 'react';
+import AllProductContext from './AllProductCTX';
+import { useEffect } from 'react';
 
 const CartCTX = React.createContext({
     addToCartArray: () => { },
     setCartTotal: () => { },
     removeFromCartArray: () => { },
+    decreaseProductQuantity: () => { },
+    increaseProductQuantity: () => { },
     cartProductArray: [],
     cartTotal: {}
 })
 
 export const CartCTXProvider = ({ children }) => {
 
+    const AllProductCTX = useContext(AllProductContext)
     const [cartProductArray, setCartProductArray] = useState([])
+    const [cartTotal, setCartTotal] = useState([])
 
-    const [cartTotal, setCartTotal] = useState({ price: 0, quantity: 0 })
+
+    /* -------------------------------------------------------------------------- */
+    /*                      GETTING DATA FROM ALL PRODUCT CTX                     */
+    /* -------------------------------------------------------------------------- */
+
+
+    useEffect(() => {
+        setCartProductArray(AllProductCTX.cartProducts)
+        setCartTotal(AllProductCTX.cartTotal)
+    }, [AllProductCTX.cartTotal, AllProductCTX.cartProducts])
+
+
 
     /* -------------------------------------------------------------------------- */
     /*                               Add To CartList                              */
     /* -------------------------------------------------------------------------- */
-    const addToCartArray = (productData) => {
-        console.log(productData);
+    const addToCartArray = async (productData, setIsAdded) => {
+        try {
+            const response = await fetch(`${CART_FIREBASE_APIKEY}/${productData.id}.json`, {
+                method: "PUT",
+                body: JSON.stringify(productData)
+            })
+            const data = await response.json()
+
+            if (!response.ok) {
+                throw new Error(data.error.message)
+            }
+            setIsAdded(true)
+        } catch (error) {
+            alert(error)
+            console.log(error);
+        }
+
     }
 
 
     /* -------------------------------------------------------------------------- */
     /*                            REMOVE FROM CARTLIST                            */
     /* -------------------------------------------------------------------------- */
-    const removeFromCartArray = (productData) => {
-        console.log(productData);
+    const removeFromCartArray = async (productData) => {
+        try {
+            const response = await fetch(`${CART_FIREBASE_APIKEY}/${productData.id}.json`, {
+                method: "DELETE"
+            })
+            const data = await response.json()
+            if (!response.ok) {
+                throw new Error(data.error.message)
+            }
+            setCartProductArray((prev) => {
+                return prev.filter((cartProduct) => {
+                    return cartProduct.id !== productData.id
+                })
+            })
+
+        } catch (error) {
+            alert(error)
+            console.log(error);
+        }
     }
 
     /* -------------------------------------------------------------------------- */
@@ -34,6 +85,13 @@ export const CartCTXProvider = ({ children }) => {
     /* -------------------------------------------------------------------------- */
 
     const decreaseProductQuantity = (productData) => {
+        console.log(productData);
+    }
+    /* -------------------------------------------------------------------------- */
+    /*                              INCREASE QUANTITY                             */
+    /* -------------------------------------------------------------------------- */
+
+    const increaseProductQuantity = (productData) => {
         console.log(productData);
     }
 
@@ -44,7 +102,16 @@ export const CartCTXProvider = ({ children }) => {
 
 
     return (
-        <CartCTX.Provider value={{ cartProductArray, addToCartArray, setCartTotal, cartTotal, removeFromCartArray }}>
+        <CartCTX.Provider value={
+            {
+                cartProductArray,
+                addToCartArray,
+                setCartTotal,
+                cartTotal,
+                removeFromCartArray,
+                increaseProductQuantity,
+                decreaseProductQuantity
+            }}>
             {children}
         </CartCTX.Provider>
     )

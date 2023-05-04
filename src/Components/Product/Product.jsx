@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 function Product(props) {
 
 
-
     return (
         <div className=' Product-div '>
 
