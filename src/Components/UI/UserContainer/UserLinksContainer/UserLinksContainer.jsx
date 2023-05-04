@@ -16,7 +16,7 @@ function UserLinksContainer(props) {
             <UserLinks icon={<i className='bx bxs-heart' ></i>} name="My Wishlist" link="#" />
             <UserLinks icon={<i className='bx bxs-offer' ></i>} name="My Offers" link="#" />
 
-            {loginCTX.isLogin && <UserLinks onClick={loginCTX.logoutUser} icon={<i className='bx bxs-log-out'></i>} name="Logout" link="#" />}
+            {loginCTX.loginState.isLogin && <UserLinks onClick={loginCTX.logoutUser} icon={<i className='bx bxs-log-out'></i>} name="Logout" link="#" />}
 
         </div>
     );

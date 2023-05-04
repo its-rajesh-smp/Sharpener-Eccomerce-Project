@@ -15,7 +15,7 @@ function UserContainer(props) {
         <div className=' UserContainer-div slide '>
             <UserProfileMini userDetails={loginCTX.loginState} />
 
-            {!loginCTX.isLogin && <LoginBTN />}
+            {!loginCTX.loginState.isLogin && <LoginBTN />}
 
             <UserLinksContainer />
 

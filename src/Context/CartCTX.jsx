@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const CartCTX = React.createContext({
     addToCartArray: () => { },
     setCartTotal: () => { },
+    removeFromCartArray: () => { },
     cartProductArray: [],
     cartTotal: {}
 })
@@ -17,30 +18,33 @@ export const CartCTXProvider = ({ children }) => {
     /*                               Add To CartList                              */
     /* -------------------------------------------------------------------------- */
     const addToCartArray = (productData) => {
-        setCartTotal((prev) => {
-            return { price: prev.price + productData.price, quantity: prev.quantity + productData.quantity }
-        })
+        console.log(productData);
+    }
 
-        setCartProductArray((prev) => {
-            let isPresent = false
-            const newArray = prev.map((val) => {
-                if (val.name === productData.name) {
-                    const newQuantity = val.quantity + productData.quantity
-                    val.quantity = newQuantity
-                    isPresent = true
-                }
-                return val
-            })
-            if (isPresent === true) { return newArray }
-            else { return [productData, ...newArray] }
 
-        })
+    /* -------------------------------------------------------------------------- */
+    /*                            REMOVE FROM CARTLIST                            */
+    /* -------------------------------------------------------------------------- */
+    const removeFromCartArray = (productData) => {
+        console.log(productData);
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                              DECREASE QUANTITY                             */
+    /* -------------------------------------------------------------------------- */
+
+    const decreaseProductQuantity = (productData) => {
+        console.log(productData);
     }
 
 
 
+
+
+
+
     return (
-        <CartCTX.Provider value={{ cartProductArray, addToCartArray, setCartTotal, cartTotal }}>
+        <CartCTX.Provider value={{ cartProductArray, addToCartArray, setCartTotal, cartTotal, removeFromCartArray }}>
             {children}
         </CartCTX.Provider>
     )

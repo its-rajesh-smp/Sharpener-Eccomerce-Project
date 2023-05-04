@@ -8,6 +8,7 @@ import { HeaderLinksCTXProvider } from './Context/HeaderLinksCTX'
 import { CartCTXProvider } from './Context/CartCTX'
 import { LoginContextProvider } from './Context/LoginContext'
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
 
   <LoginContextProvider>
@@ -24,4 +25,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </CartCTXProvider>
     </HeaderLinksCTXProvider>
   </LoginContextProvider>
+
 )

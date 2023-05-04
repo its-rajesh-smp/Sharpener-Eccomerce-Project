@@ -14,6 +14,7 @@ function PrimaryHeader(props) {
 
     const cartToggel = useContext(HeaderLinksCTX)
 
+    console.log("RENDER HEADER");
 
     return (
         <>

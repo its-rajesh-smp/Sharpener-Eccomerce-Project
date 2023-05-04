@@ -5,13 +5,13 @@ import CartCTX from '../../Context/CartCTX';
 
 function CartProductContainer(props) {
 
-    const cartProductArray = useContext(CartCTX)
+    const cartContext = useContext(CartCTX)
 
 
     return (
         <div className=' CartProductContainer-div '>
             {
-                cartProductArray.cartProductArray.map((val) => {
+                cartContext.cartProductArray.map((val) => {
                     return <CartProduct details={val} key={Math.random()} />
                 })
             }

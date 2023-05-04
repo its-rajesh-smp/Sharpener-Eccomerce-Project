@@ -2,24 +2,33 @@ import React, { useEffect, useState } from 'react';
 import { CREATE_NEW_USER_APIKEY, LOGIN_USER_APIKEY } from '../Assets/Assets';
 
 
+
 const LoginContext = React.createContext({
-    isLogin: "",
     loader: "",
-    setIslogin: () => { },
     createAndLoginUser: () => { },
     logoutUser: () => { },
     loginState: () => { },
-    setLoadingScreen: () => { },
-    loadingScreen: () => { },
+    loadingScreen: "",
 })
 
 
 export const LoginContextProvider = ({ children }) => {
 
-    const [isLogin, setIslogin] = useState(false)
+    const [loginState, setLoginState] = useState({
+        isLogin: false,
+        userEmail: undefined,
+        idToken: undefined,
+        userName: undefined,
+        userPhone: undefined,
+        cartData: []
+    })
+
+
     const [loadingScreen, setLoadingScreen] = useState(true)
     const [loader, setLoader] = useState(false)
 
+
+    console.log("%cRENDER LOGIN CTX", "color:red");
 
     /* -------------------------------------------------------------------------- */
     /*                             FETCH USER ON LOAD                             */
@@ -32,14 +41,6 @@ export const LoginContextProvider = ({ children }) => {
         setLoadingScreen(false)
     }, [])
 
-
-    const loginState = {
-        isLogin: false,
-        userEmail: undefined,
-        idToken: undefined,
-        userName: undefined,
-        userPhone: undefined
-    }
 
     /* -------------------------------------------------------------------------- */
     /*                             CREATE & LOGIN USER                            */
@@ -58,13 +59,15 @@ export const LoginContextProvider = ({ children }) => {
                 headers: { "Content-Type": "application/json" }
             })
             const data = await response.json()
+
             if (!response.ok) {
                 throw new Error(data.error.message)
             }
             controlUserAccess(data, "ALLOW")
 
         } catch (error) {
-            alert(error)
+            alert(error);
+            console.log(error);
         }
 
         setLoader(false)
@@ -75,16 +78,26 @@ export const LoginContextProvider = ({ children }) => {
     /* -------------------------------------------------------------------------- */
     function controlUserAccess(data, action) {
         if (action === "ALLOW") {
-            loginState.idToken = data.idToken
-            loginState.userEmail = data.email
             localStorage.setItem("data", JSON.stringify(data))
-            setIslogin(true)
+            setLoginState({
+                isLogin: true,
+                userEmail: data.email,
+                idToken: data.idToken,
+                userName: undefined,
+                userPhone: undefined,
+                cartData: []
+            })
         }
         else {
-            loginState.idToken = undefined
-            loginState.userEmail = undefined
             localStorage.removeItem("data")
-            setIslogin(false)
+            setLoginState({
+                isLogin: false,
+                userEmail: undefined,
+                idToken: undefined,
+                userName: undefined,
+                userPhone: undefined,
+                cartData: []
+            })
         }
 
     }
@@ -101,7 +114,7 @@ export const LoginContextProvider = ({ children }) => {
 
 
     return (
-        <LoginContext.Provider value={{ isLogin, loginState, createAndLoginUser, logoutUser, loadingScreen, loader }}>
+        <LoginContext.Provider value={{ loginState, createAndLoginUser, logoutUser, loadingScreen, loader }}>
             {children}
         </LoginContext.Provider>
     )

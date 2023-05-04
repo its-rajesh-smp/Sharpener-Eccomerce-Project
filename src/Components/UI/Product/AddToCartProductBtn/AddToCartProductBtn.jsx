@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import "./AddToCartProductBtn.css"
 import CartCTX from '../../../../Context/CartCTX';
+import { useState } from 'react';
 
 function AddToCartProductBtn(props) {
-    const addToCartListCTX = useContext(CartCTX)
+    const cartContext = useContext(CartCTX)
 
+    const [isAdded, setIsAdded] = useState(false)
 
     // Add To Cart On Button Click
     const addToCartOnBtnClick = () => {
@@ -12,15 +14,20 @@ function AddToCartProductBtn(props) {
             name: props.details.name,
             price: props.details.price,
             imageUrl: props.details.imageUrl,
-            quantity: 1
+            quantity: 1,
+            id: props.details.id
         }
-        addToCartListCTX.addToCartArray(productData)
+        cartContext.addToCartArray(productData)
+        setIsAdded(true)
     }
+
+
 
 
     return (
         <div className=' AddToCartProductBtn-div '>
-            <button onClick={addToCartOnBtnClick} >Add</button>
+            {!isAdded && <button onClick={addToCartOnBtnClick} >Add</button>}
+            {isAdded && <button >GO TO CART</button>}
         </div>
     );
 }

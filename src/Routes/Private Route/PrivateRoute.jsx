@@ -8,7 +8,7 @@ function PrivateRoute(props) {
     const loginCTX = useContext(LoginContext)
 
 
-    if (loginCTX.isLogin === props.auth) {
+    if (loginCTX.loginState.isLogin === props.auth) {
         return <Route path={props.path} component={props.component} exact={props.exact} />
     } else {
         return <Redirect to="/" />
