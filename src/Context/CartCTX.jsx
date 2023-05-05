@@ -3,6 +3,7 @@ import { CART_FIREBASE_APIKEY } from '../Assets/Assets';
 import { useContext } from 'react';
 import AllProductContext from './AllProductCTX';
 import { useEffect } from 'react';
+import LoginContext from './LoginContext';
 
 const CartCTX = React.createContext({
     addToCartArray: () => { },
@@ -18,8 +19,15 @@ const CartCTX = React.createContext({
 export const CartCTXProvider = ({ children }) => {
 
     const AllProductCTX = useContext(AllProductContext)
+    const authCTX = useContext(LoginContext)
+
+
+
     const [cartProductArray, setCartProductArray] = useState([])
     const [cartTotal, setCartTotal] = useState({ price: 0, quantity: 0 })
+
+    const userEmail = (authCTX.loginState.userEmail === undefined ? "" : authCTX.loginState.userEmail.replace(".", "").replace("@", ""))
+    const APIKEY = `${CART_FIREBASE_APIKEY}/${userEmail}`
 
 
     /* -------------------------------------------------------------------------- */
@@ -54,7 +62,7 @@ export const CartCTXProvider = ({ children }) => {
 
         if (!isAdded) {
             try {
-                const response = await fetch(`${CART_FIREBASE_APIKEY}/${productData.id}.json`, {
+                const response = await fetch(`${APIKEY}/${productData.id}.json`, {
                     method: "PUT",
                     body: JSON.stringify(productData)
                 })
@@ -94,7 +102,7 @@ export const CartCTXProvider = ({ children }) => {
     /* -------------------------------------------------------------------------- */
     const removeFromCartArray = async (productData, setLoader) => {
         try {
-            const response = await fetch(`${CART_FIREBASE_APIKEY}/${productData.id}.json`, {
+            const response = await fetch(`${APIKEY}/${productData.id}.json`, {
                 method: "DELETE"
             })
             const data = await response.json()
@@ -131,7 +139,7 @@ export const CartCTXProvider = ({ children }) => {
             return
         }
         try {
-            const response = await fetch(`${CART_FIREBASE_APIKEY}/${productData.id}.json`, {
+            const response = await fetch(`${APIKEY}/${productData.id}.json`, {
                 method: "PATCH",
                 body: JSON.stringify({ quantity: productData.quantity - 1 })
             })
@@ -167,7 +175,7 @@ export const CartCTXProvider = ({ children }) => {
 
     const increaseProductQuantity = async (productData, setLoader) => {
         try {
-            const response = await fetch(`${CART_FIREBASE_APIKEY}/${productData.id}.json`, {
+            const response = await fetch(`${APIKEY}/${productData.id}.json`, {
                 method: "PATCH",
                 body: JSON.stringify({ quantity: productData.quantity + 1 })
             })
@@ -204,7 +212,7 @@ export const CartCTXProvider = ({ children }) => {
 
     const placeOrder = async () => {
         try {
-            const response = await fetch(`${CART_FIREBASE_APIKEY}.json`, { method: "DELETE" })
+            const response = await fetch(`${APIKEY}.json`, { method: "DELETE" })
             const data = await response.json()
 
             if (!response.ok) {

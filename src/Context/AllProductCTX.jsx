@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PRODUCT_FIREBASE_APIKEY, CART_FIREBASE_APIKEY } from '../Assets/Assets';
+import { useContext } from 'react';
+import LoginContext from './LoginContext';
 
 
 
@@ -16,6 +18,7 @@ const AllProductContext = React.createContext({
 
 export const AllProductContextProvider = ({ children }) => {
 
+    const authCTX = useContext(LoginContext)
     const [allProductArray, setAllProductArray] = useState([])
     const [cartProducts, setCartProducts] = useState([])
     const [cartTotal, setCartTotal] = useState({ price: 0, quantity: 0 })
@@ -26,11 +29,21 @@ export const AllProductContextProvider = ({ children }) => {
     useEffect(() => {
         async function fetchAllProduct() {
             try {
+
+                if (!authCTX.loginState.isLogin) {
+                    setCartProducts([])
+                    setCartTotal({ price: 0, quantity: 0 })
+                    return
+                }
+                const localData = JSON.parse(localStorage.getItem("data"))
+                const userEmail = localData.email.replace(".", "").replace("@", "")
+
                 const allProductResponse = await fetch(PRODUCT_FIREBASE_APIKEY + ".json")
                 const allProductList = await allProductResponse.json()
 
-                const cartProductResponse = await fetch(CART_FIREBASE_APIKEY + ".json")
+                const cartProductResponse = await fetch(`${CART_FIREBASE_APIKEY}/${userEmail}.json`)
                 const cartProductList = await cartProductResponse.json()
+
 
                 if (!allProductResponse.ok) {
                     throw new Error(allProductList.error.message)
@@ -73,7 +86,7 @@ export const AllProductContextProvider = ({ children }) => {
             }
         }
         fetchAllProduct()
-    }, [])
+    }, [authCTX.loginState])
 
 
 
