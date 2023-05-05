@@ -1,4 +1,4 @@
-.CheckoutContainer-div__topBar {
+.CheckoutContainerNav-div {
   display: flex;
   background-color: #2874f0;
   padding: 10px;
@@ -6,12 +6,11 @@
   color: white;
   font-family: roboto;
   align-items: center;
+  margin-top: 20px;
 }
-.CheckoutContainer-div__topBar p:first-child {
+.CheckoutContainerNav-div p:first-child {
   background-color: aliceblue;
   color: #2874f0;
   padding: 2px 5px;
   border-radius: 2px;
-}
-.CheckoutContainer-div_container {
 }

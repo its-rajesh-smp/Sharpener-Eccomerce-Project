@@ -1,0 +1,9 @@
+.paymentBtn {
+  margin-top: 15px;
+  padding: 15px 50px;
+  border: none;
+  background-color: #fb641b;
+  color: white;
+  border-radius: 5px;
+  font-family: roboto;
+}

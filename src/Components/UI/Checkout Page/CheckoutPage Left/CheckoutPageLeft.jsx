@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./CheckoutPageLeft.css"
-import CheckoutContainer from '../../../Checkout Container/CheckoutContainer';
-import { useState } from 'react';
+import CheckoutDelivery from '../CheckoutDelivery/CheckoutDelivery';
+import CheckoutOrderSummary from '../CheckoutOrderSummary/CheckoutOrderSummary';
+import CheckoutPayment from '../CheckoutPayment/CheckoutPayment';
+
 
 function CheckoutPageLeft(props) {
 
@@ -10,8 +12,9 @@ function CheckoutPageLeft(props) {
 
     return (
         <div className=' CheckoutPageLeft-div '>
-            <CheckoutContainer for="DELIVERY ADDRESS" step="1" showField={showField} />
-            <CheckoutContainer for="ORDER SUMMARY" step="2" showField={showField} />
+            <CheckoutDelivery setShowField={setShowField} showField={showField} />
+            <CheckoutOrderSummary showField={showField} setShowField={setShowField} />
+            <CheckoutPayment showField={showField} setShowField={setShowField} />
         </div>
     );
 }

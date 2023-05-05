@@ -10,6 +10,7 @@ const CartCTX = React.createContext({
     removeFromCartArray: () => { },
     decreaseProductQuantity: () => { },
     increaseProductQuantity: () => { },
+    placeOrder: () => { },
     cartProductArray: [],
     cartTotal: {}
 })
@@ -136,11 +137,9 @@ export const CartCTXProvider = ({ children }) => {
             })
             const data = await response.json()
 
-
             if (!response.ok) {
                 throw new Error(data.error.message)
             }
-
 
             setCartProductArray((prev) => {
                 return prev.map((product) => {
@@ -187,8 +186,6 @@ export const CartCTXProvider = ({ children }) => {
                 })
             })
 
-
-
             setCartTotal((prev) => {
                 return { price: prev.price + productData.price, quantity: prev.quantity + 1 }
             })
@@ -201,8 +198,28 @@ export const CartCTXProvider = ({ children }) => {
         }
     }
 
+    /* -------------------------------------------------------------------------- */
+    /*                                 PLACE ORDER                                */
+    /* -------------------------------------------------------------------------- */
 
+    const placeOrder = async () => {
+        try {
+            const response = await fetch(`${CART_FIREBASE_APIKEY}.json`, { method: "DELETE" })
+            const data = await response.json()
 
+            if (!response.ok) {
+                throw new Error(data.error.message)
+            }
+
+            console.log("ORDER PLACED");
+            setCartTotal({ price: 0, quantity: 0 })
+            setCartProductArray([])
+
+        } catch (error) {
+            alert(error);
+            console.log(error);
+        }
+    }
 
 
 
@@ -216,6 +233,7 @@ export const CartCTXProvider = ({ children }) => {
                 cartTotal,
                 removeFromCartArray,
                 increaseProductQuantity,
+                placeOrder,
                 decreaseProductQuantity
             }}>
             {children}

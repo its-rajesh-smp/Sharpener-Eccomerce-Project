@@ -7,6 +7,10 @@ function CartProductContainer(props) {
 
     const cartContext = useContext(CartCTX)
 
+    const onPlaceBtnClickHandeler = () => {
+        cartContext.placeOrder()
+    }
+
 
     return (
         <div className=' CartProductContainer-div '>
@@ -15,6 +19,10 @@ function CartProductContainer(props) {
                     return <CartProduct details={val} key={Math.random()} />
                 })
             }
+            {cartContext.cartProductArray.length > 0 ?
+                <button onClick={onPlaceBtnClickHandeler} className='paymentBtn'>PLACE ORDER</button> : <h1>CART IS EMPTY</h1>
+            }
+
         </div>
     );
 }

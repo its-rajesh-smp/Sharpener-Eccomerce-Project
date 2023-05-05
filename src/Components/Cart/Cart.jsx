@@ -10,6 +10,7 @@ function Cart(props) {
         <div className={`Cart-div slide`}>
             <CartDetails />
             <CartProductContainer />
+
         </div>
     );
 }
