@@ -1,0 +1,7 @@
+.Checkout-div {
+  display: grid;
+  padding: 0px 20px;
+  grid-template-columns: 1.5fr 1fr;
+  background-color: rgb(231, 246, 246);
+  height: calc(100vh - 60px);
+}

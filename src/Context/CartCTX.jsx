@@ -18,7 +18,7 @@ export const CartCTXProvider = ({ children }) => {
 
     const AllProductCTX = useContext(AllProductContext)
     const [cartProductArray, setCartProductArray] = useState([])
-    const [cartTotal, setCartTotal] = useState([])
+    const [cartTotal, setCartTotal] = useState({ price: 0, quantity: 0 })
 
 
     /* -------------------------------------------------------------------------- */
@@ -67,6 +67,10 @@ export const CartCTXProvider = ({ children }) => {
                     return [productData, ...prev]
                 })
 
+                setCartTotal((prev) => {
+                    return { price: prev.price + productData.price, quantity: prev.quantity + productData.quantity }
+                })
+
                 setLoader(false)
                 setIsAdded(true)
                 setTimeout(function () {
@@ -87,7 +91,7 @@ export const CartCTXProvider = ({ children }) => {
     /* -------------------------------------------------------------------------- */
     /*                            REMOVE FROM CARTLIST                            */
     /* -------------------------------------------------------------------------- */
-    const removeFromCartArray = async (productData) => {
+    const removeFromCartArray = async (productData, setLoader) => {
         try {
             const response = await fetch(`${CART_FIREBASE_APIKEY}/${productData.id}.json`, {
                 method: "DELETE"
@@ -102,27 +106,99 @@ export const CartCTXProvider = ({ children }) => {
                 })
             })
 
-
+            setCartTotal((prev) => {
+                return { price: prev.price - productData.price * productData.quantity, quantity: prev.quantity - productData.quantity }
+            })
 
         } catch (error) {
             alert(error)
             console.log(error);
         }
+        setLoader(false)
+
     }
+
 
     /* -------------------------------------------------------------------------- */
     /*                              DECREASE QUANTITY                             */
     /* -------------------------------------------------------------------------- */
 
-    const decreaseProductQuantity = (productData) => {
-        console.log(productData);
+    const decreaseProductQuantity = async (productData, setLoader) => {
+
+        if (productData.quantity === 1) {
+            removeFromCartArray(productData)
+            return
+        }
+        try {
+            const response = await fetch(`${CART_FIREBASE_APIKEY}/${productData.id}.json`, {
+                method: "PATCH",
+                body: JSON.stringify({ quantity: productData.quantity - 1 })
+            })
+            const data = await response.json()
+
+
+            if (!response.ok) {
+                throw new Error(data.error.message)
+            }
+
+
+            setCartProductArray((prev) => {
+                return prev.map((product) => {
+                    if (product.id === productData.id) {
+                        product.quantity -= 1
+                    }
+                    return product
+                })
+            })
+
+
+            setCartTotal((prev) => {
+                return { price: prev.price - productData.price, quantity: prev.quantity - 1 }
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
     }
+
+
     /* -------------------------------------------------------------------------- */
     /*                              INCREASE QUANTITY                             */
     /* -------------------------------------------------------------------------- */
 
-    const increaseProductQuantity = (productData) => {
-        console.log(productData);
+    const increaseProductQuantity = async (productData, setLoader) => {
+        try {
+            const response = await fetch(`${CART_FIREBASE_APIKEY}/${productData.id}.json`, {
+                method: "PATCH",
+                body: JSON.stringify({ quantity: productData.quantity + 1 })
+            })
+            const data = await response.json()
+
+            if (!response.ok) {
+                throw new Error(data.error.message)
+            }
+
+            setCartProductArray((prev) => {
+                return prev.map((product) => {
+                    if (product.id === productData.id) {
+                        product.quantity += 1
+                    }
+                    return product
+                })
+            })
+
+
+
+            setCartTotal((prev) => {
+                return { price: prev.price + productData.price, quantity: prev.quantity + 1 }
+            })
+
+            setLoader(false)
+
+        } catch (error) {
+            setLoader(false)
+            console.log(error);
+        }
     }
 
 

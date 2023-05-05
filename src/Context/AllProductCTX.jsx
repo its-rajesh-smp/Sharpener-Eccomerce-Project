@@ -11,7 +11,6 @@ const AllProductContext = React.createContext({
     cartProducts: [],
     setAllProductArray: () => { },
     setCartProducts: () => { },
-    cartTotal: () => { },
     cartTotal: { price: 0, quantity: 0 }
 })
 
@@ -58,7 +57,6 @@ export const AllProductContextProvider = ({ children }) => {
                     }
                     newProductList.push(allProductList[key])
                 }
-
                 if (cartProductList !== null) {
                     for (const key in cartProductList) {
                         newCartList.push(cartProductList[key])
@@ -66,7 +64,6 @@ export const AllProductContextProvider = ({ children }) => {
                         newCartTotal.quantity += cartProductList[key].quantity
                     }
                 }
-
                 setAllProductArray(newProductList)
                 setCartProducts(newCartList)
                 setCartTotal(newCartTotal)

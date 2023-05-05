@@ -15,6 +15,7 @@ import PageNotFound from '../../Pages/Page Not Found/PageNotFound';
 import Login from '../../Pages/Login/Login';
 import NewRegistration from '../../Pages/New Registration/NewRegistration';
 import LoadingPage from "../../Pages/Loading Page/LoadingPage"
+import Checkout from '../../Pages/Checkout/Checkout';
 
 function MyRoutes(props) {
 
@@ -38,6 +39,7 @@ function MyRoutes(props) {
                 <Route path="/changepassword"><ChangePassword /></Route>
                 <Route path="/contactus"><ContactUs /></Route>
                 <Route path="/error"><PageNotFound /></Route>
+                <Route path="/checkout"><Checkout /></Route>
 
                 <PrivateRoute auth={false} exact={true} component={Login} path="/login" />
                 <PrivateRoute auth={false} exact={false} component={NewRegistration} path="/newregistration" />
