@@ -10,10 +10,8 @@ function Login(props) {
     return (
         <div className='container Login-div '>
 
-
             <LoginPageleft backImage={loginPageLeftBackground} text1="Login" text2="Login with your email & password" />
             <LoginPageRight icon="" for="login" />
-
 
         </div>
     );
